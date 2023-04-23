@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: ./backend/nbp-operations-service
+    ports:
+      - "8080:8080"
+  frontend:
+    build:
+      context: frontend/nbp-operations-ui
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend

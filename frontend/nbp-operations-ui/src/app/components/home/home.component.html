@@ -1,0 +1,42 @@
+<div class="content">
+  <div class="task1Content">
+    <div class="currencyText">Wybierz walutę</div>
+    <div class="currencySelect">
+      <mat-form-field appearance="fill">
+        <mat-select [(value)]="selectedCurrency">
+          <mat-option *ngFor="let currencyCode of currencyCodes" [value]="currencyCode">
+            {{currencyCode}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="task1Text">1# Średni kurs wymiany w zależności od wybranego dnia</div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" (dateInput)="onDateChange($event.value)">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button class="task1Button" (click)="getAverageExchangeRate()" [disabled]="isTask1Disabled()">Sprawdź</button>
+    <div class="task1Result">Wynik: <div>{{task1Result}}</div></div>
+  </div>
+  <div class="task2Content">
+    <div class="task2Text">2# Min/Max Średni kurs wymiany spośród X ostatnich</div>
+    <div class="rangeText">Podaj zakres ostatnich kursów, musi być w przedziale 1-255</div>
+    <div class="numberText">Zakres: </div>
+    <input type="number" name="range" min="1" max="255" (keyup)="changeRange($event)">
+    <div><button class="task1Button" (click)="getMinMax()" [disabled]="isTask2Disabled()">Sprawdź</button></div>
+    <div class="task1Result">Wynik: <div>{{task2Result}}</div></div>
+  </div>
+  <div class="task3Content">
+    <div class="task1Text">3# Największa różnica pomiędzy kursami kupna/sprzedaży spośród X ostatnich</div>
+    <div class="rangeText">Podaj zakres ostatnich kursów, musi być w przedziale 1-255</div>
+    <div class="numberText">Zakres: </div>
+    <input type="number" name="range" min="1" max="255" (keyup)="changeRange2($event)">
+    <div><button class="task1Button" (click)="getMajorDiffrence()" [disabled]="isTask3Disabled()">Sprawdź</button></div>
+    <div class="task1Result">Wynik: <div>{{task3Result}}</div></div>
+  </div>
+</div>

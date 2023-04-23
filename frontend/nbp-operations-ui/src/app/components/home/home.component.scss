@@ -1,0 +1,67 @@
+.content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    display: block;
+}
+.currencyText {
+    font-size: xx-large;
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 2vh;
+    margin-top: 1vh;
+}
+.currencySelect {
+    margin-bottom: 2vh;
+}
+.task1Text {
+    font-weight:bolder;
+    font-size: x-large;
+    margin-bottom: 2vh;
+    color: indigo;
+}
+.task1Button {
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    margin-top: 2vh;
+}
+.task1Button:disabled {
+    background-color: gray;
+}
+.task1Result {
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: 1vh;
+}
+.task1Result div {
+    color: rgb(130, 0, 0);
+    display: inline;
+}
+.task2Content {
+    margin-top: 4vh;
+}
+.task2Text {
+    font-weight:bolder;
+    font-size: x-large;
+    margin-bottom: 2vh;
+    color: indigo;
+}
+.rangeText {
+    font-size: large;
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+.numberText {
+    display: inline;
+    font-size:medium;
+    font-weight: bold;
+    color: indigo;
+}
+.task3Content {
+    margin-top: 4vh;
+}
