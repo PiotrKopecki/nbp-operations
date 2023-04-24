@@ -4,9 +4,11 @@ import com.nbp.operations.api.dto.AverageExchangeRateDto;
 import com.nbp.operations.api.dto.BuySellExchangeRateDto;
 import com.nbp.operations.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class NbpApiService {
@@ -33,30 +35,33 @@ public class NbpApiService {
 		if(!isValidDate(date)) {
 			throw new BusinessException("Invalid date format", HttpStatus.BAD_REQUEST);
 		}
-		AverageExchangeRateDto averageExchangeRateDto = null;
+		AverageExchangeRateDto averageExchangeRateDto;
 		try{
 			averageExchangeRateDto = nbpApi.getAverageExchangeRateByDate(table, currencyCode, date);
 		} catch (Exception e) {
+			log.warn(e.getMessage());
 			return null;
 		}
 		return averageExchangeRateDto;
 	}
 
 	public AverageExchangeRateDto getLastAverageExchangeRates(String table, String currencyCode, Integer topCount) {
-		AverageExchangeRateDto averageExchangeRateDto = null;
+		AverageExchangeRateDto averageExchangeRateDto;
 		try{
 			averageExchangeRateDto = nbpApi.getLastAverageExchangeRates(table, currencyCode, topCount);
 		} catch (Exception e) {
+			log.warn(e.getMessage());
 			return null;
 		}
 		return averageExchangeRateDto;
 	}
 
 	public BuySellExchangeRateDto getLastExchangeRates(String table, String currencyCode, Integer topCount) {
-		BuySellExchangeRateDto buySellExchangeRateDto = null;
+		BuySellExchangeRateDto buySellExchangeRateDto;
 		try{
 			buySellExchangeRateDto = nbpApi.getLastExchangeRates(table, currencyCode, topCount);
 		} catch (Exception e) {
+			log.warn(e.getMessage());
 			return null;
 		}
 		return buySellExchangeRateDto;
