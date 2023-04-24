@@ -28,22 +28,14 @@ export class HomeComponent {
 
   getAverageExchangeRate() {
     this.currenciesService.getAverageExchangeRate(this.chosenDate, this.selectedCurrency).subscribe(result => {
-      if (result == -1) {
-        this.task1Result = "brak danych";
-      }
-      else {
-        this.task1Result = result.toString();
-      }
+      this.task1Result = (result == -1) ? "brak danych" : result.toString();
     })
   }
   onDateChange(event: any) {
     this.chosenDate = this.datePipe.transform(event, 'yyyy-MM-dd')!;
   }
   isTask1Disabled() {
-    if (this.chosenDate != "" && this.selectedCurrency != "") {
-      return false;
-    }
-    return true;
+    return this.chosenDate === "" || this.selectedCurrency === ""
   }
   changeRange(event: any) {
     this.chosenRange = event.target.value;
@@ -54,34 +46,18 @@ export class HomeComponent {
   getMinMax() {
     this.currenciesService.getMinMax(this.chosenRange, this.selectedCurrency).subscribe(result => {
       let minMaxDto: MinMaxDto = result;
-      if (minMaxDto == null) {
-        this.task2Result = "brak danych";
-      }
-      else {
-        this.task2Result = "max: " + minMaxDto.max + "  min: " + minMaxDto.min;
-      }
+      this.task2Result = (minMaxDto == null) ? "brak danych" : "max: " + minMaxDto.max + "  min: " + minMaxDto.min;
     })
   }
   isTask2Disabled() {
-    if (this.chosenRange != 0 && this.selectedCurrency != "") {
-      return false;
-    }
-    return true;
+    return this.chosenRange === 0 || this.selectedCurrency === "";
   }
   isTask3Disabled() {
-    if (this.chosenRange2 != 0 && this.selectedCurrency != "") {
-      return false;
-    }
-    return true;
+    return this.chosenRange2 === 0 || this.selectedCurrency === "";
   }
   getMajorDiffrence() {
     this.currenciesService.getMajorDiffrence(this.chosenRange2, this.selectedCurrency).subscribe(result => {
-      if (result == -1) {
-        this.task3Result = "brak danych";
-      }
-      else {
-        this.task3Result = result.toFixed(10).toString();
-      }
+      this.task3Result = (result == -1) ?  "brak danych" : result.toFixed(10).toString();
     })
   }
 }

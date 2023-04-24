@@ -27,9 +27,10 @@
     background-color: black;
     border-radius: 10px;
     margin-top: 2vh;
-}
-.task1Button:disabled {
-    background-color: gray;
+
+    &:disabled {
+        background-color: gray;
+    }
 }
 .task1Result {
     font-size: x-large;
